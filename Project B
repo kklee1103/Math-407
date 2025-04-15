@@ -1,0 +1,19 @@
+tic;  % Start the timer
+i = 0;
+s = 0;
+target = 500030;
+
+while s ~= target
+    i = i + 1;
+    rand('state', i);
+    s = floor(10^6 * rand); 
+end
+
+elapsed_time = toc;  % Stop the timer
+
+fprintf('The smallest seed that produces the first six digits of your student ID is %d\n', i);
+fprintf( 'The elapsed time to find the seed was %.6f seconds\n', elapsed_time);
+
+rand('state', i);
+random_number = rand;
+fprintf('The random number generated with the seed is %.15f\n', random_number);
