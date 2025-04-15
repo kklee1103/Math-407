@@ -1,0 +1,21 @@
+n1p=nchoosek(13,1)*nchoosek(12,3)*nchoosek(4,2)*nchoosek(4,1)^3;
+n2p=nchoosek(13,2)*nchoosek(11,1)*nchoosek(4,2)^2*nchoosek(4,1);
+n3=nchoosek(13,1)*nchoosek(12,2)*nchoosek(4,3)*nchoosek(4,1)^2;
+nfull=nchoosek(13,1)*nchoosek(12,1)*nchoosek(4,3)*nchoosek(4,2);
+n4=nchoosek(13,1)*nchoosek(12,1)*nchoosek(4,4)*nchoosek(4,1);
+nh=nchoosek(52,5);
+
+a = (n1p+n2p+n3+nfull+n4) / nh;
+
+% Poisson approximation b = P(Z > 0)
+lambda = 0.5882; 
+b = 1 - exp(-lambda);
+
+fprintf('Exact value a = %.10f\n', a)
+fprintf('Poisson approximation b = %.10f\n', b)
+
+b_a = b-a;
+fprintf('Absolute error = %.10f\n', b_a)
+
+relative_error = (b-a)/a;
+fprintf('Relative error = %.10f\n', relative_error)
